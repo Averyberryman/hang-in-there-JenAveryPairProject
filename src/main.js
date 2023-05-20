@@ -9,10 +9,15 @@ var showSavedButton = document.querySelector(".show-saved")
 var saveThisButton = document.querySelector(".save-poster")
 var nevermindButton = document.querySelector(".show-main")
 var backToMainButton= document.querySelector(".back-to-main")
+var showMyPosterButton = documet.querySelector(".make-poster")
 
 var posterFormPage = document.querySelector(".poster-form")
 var posterPage = document.querySelector(".main-poster")
 var savedPostersPage = document.querySelector(".saved-posters")
+
+var inputBox1 = document.querySelector("#poster-image-url")
+var inputBox2 = document.querySelector('#poster-title')
+var inputBox3 = document.querySelector('#poster-quote')
 
 
 
@@ -125,6 +130,7 @@ nevermindButton.addEventListener("click", goBackToMain)
 showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
 saveThisButton.addEventListener("click", saveThisPoster)
+showMyPosterButton.addEventListener("click", createYourOwnPoster)
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -172,6 +178,18 @@ function saveThisPoster(){
   savedPostersPage.classList.remove("hidden")
   posterPage.classList.add("hidden")
 }
+
+////////////////////Iteration 2//////////////
+ function createYourOwnPoster(){
+ var userProvidedImage = inputBox1.value 
+ var userProvidedTitle = inputBox2.value 
+ var userProvidedQuote = inputBox3.value 
+
+  var createUserPoster= createNewPoster(userProvidedImage, userProvidedTitle, userProvidedQuote)
+  return createUserPoster
+  }
+
+ }
 
 //   posterFormPageHidden.classList.remove("poster-form hidden")
 //   posterFormHidden.classList.add("poster-form")
