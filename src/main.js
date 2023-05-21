@@ -209,31 +209,4 @@ function showMyPoster() {
 return userPoster
 }
 
-
-
-//   posterFormPageHidden.classList.remove("poster-form hidden")
-//   posterFormHidden.classList.add("poster-form")
-// }
-// When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden.
-// 1. we'll use devtools to identify where the button element is
-// 2. create an event listener for a "click"
-// 3. create an event handler function for that click.
-// 4. make the event handler navigate to the element that stores the form in html (stored under ".poster-form hidden")
-// 5. target the poster form hidden class and change the innerText to remove 'hidden'
-// 6. we need an event listener for clicking that button and an event handler that toggles the hidden.  we need a switch //   that swaps main poster. when one is hidden, the other is visible and vice versa. 
-// (reference kayla's codepen on how to toggle with a button. ) this is a conditional 
-// if (posterformhidden === posterformhidden) {
-//  it'll change it
-// if one is visible the other two must be hidden 
-
-
-
-//  function buttonClick(event) {
-//     posterImage.src 
-//     posterTitle.innerText
-//     posterQuote.innerText
-//     console.log("hello")
-//     console.log(event)
-//     // location.reload() // this allows us to refresh page
-//   }
-
+//
