@@ -131,7 +131,6 @@ window.addEventListener("load", createNewPoster)
 
 makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
-// showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
 saveThisButton.addEventListener("click", saveThisPoster)
 
@@ -144,7 +143,6 @@ showSavedButton.addEventListener("click", function() {
   showSavedPosters();
   displaySavedPosters();
 });
-
 
 
 
@@ -216,7 +214,18 @@ return userPoster
 
 function saveThisPoster() {
   var currentPoster = createPoster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
-  savedPosters.push(currentPoster);
+
+  var areTwinsies = savedPosters.some(function(poster) {
+    return (
+      poster.imageURL === currentPoster.imageURL &&
+      poster.title === currentPoster.title &&
+      poster.quote === currentPoster.quote
+    );
+  });
+
+  if (!areTwinsies) {
+    savedPosters.push(currentPoster);
+  }
 }
 
 function displaySavedPosters() {
