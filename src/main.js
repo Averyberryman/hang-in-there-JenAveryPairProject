@@ -133,7 +133,7 @@ makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
 showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
-// saveThisButton.addEventListener("click", )
+saveThisButton.addEventListener("click", saveThisPoster)
 
 showMyPosterButton.addEventListener("click", function(event) {
   event.preventDefault();
@@ -208,5 +208,12 @@ function showMyPoster() {
 
 return userPoster
 }
+
+function saveThisPoster() {
+  var currentPoster = createPoster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
+  savedPosters.push(currentPoster);
+}
+
+
 
 /////////Iteration 3///////
