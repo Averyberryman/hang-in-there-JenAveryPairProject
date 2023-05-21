@@ -131,7 +131,7 @@ window.addEventListener("load", createNewPoster)
 
 makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
-showSavedButton.addEventListener("click", showSavedPosters)
+// showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
 saveThisButton.addEventListener("click", saveThisPoster)
 
@@ -139,6 +139,11 @@ showMyPosterButton.addEventListener("click", function(event) {
   event.preventDefault();
   showMyPoster();
 })
+
+showSavedButton.addEventListener("click", function() {
+  showSavedPosters();
+  displaySavedPosters();
+});
 
 
 
@@ -214,6 +219,19 @@ function saveThisPoster() {
   savedPosters.push(currentPoster);
 }
 
+function displaySavedPosters() {
+  savedPostersGrid.innerHTML = ""; 
 
+  for (var i = 0; i < savedPosters.length; i++) {
+    var poster = savedPosters[i];
+    var posterElement = document.createElement("div");
+    posterElement.classList.add("mini-poster");
+    posterElement.innerHTML = `
+      <img class="mini-poster-img" src="${poster.imageURL}" alt="Saved Poster">
+      <h4 class="mini-poster-title">${poster.title}</h4>
+      <h5 class="mini-poster-quote">${poster.quote}</h5>
+    `;
+    savedPostersGrid.appendChild(posterElement);
+  }
+}
 
-/////////Iteration 3///////
