@@ -124,10 +124,11 @@ var quotes = [
 ];
 var savedPosters = [];
 var currentPoster;
+
 // event listeners go here 👇
 
-randomPosterButton.addEventListener("click", createNewPoster)
-window.addEventListener("load", createNewPoster)
+randomPosterButton.addEventListener("click", createRandomPoster)
+window.addEventListener("load", createRandomPoster)
 
 makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
@@ -144,19 +145,14 @@ showSavedButton.addEventListener("click", function() {
   displaySavedPosters();
 });
 
-
-
-
-
-
 // functions and event handlers go here 👇
-// (we've provided two to get you started)!
+
 function getRandomIndex(array) {
   var result = Math.floor(Math.random() * array.length);
   return array[result]
 }
 
-function createNewPoster() {
+function createRandomPoster() {
   var newPosterInfo = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
   displayPoster(newPosterInfo);
   return newPosterInfo
@@ -176,7 +172,7 @@ function displayPoster(poster){
   posterTitle.innerText = poster.title
   posterQuote.innerText = poster.quote
 }
-///////////////////Iteration1////////////
+
 function showForm(){
  posterFormPage.classList.remove("hidden")
   posterPage.classList.add("hidden")
@@ -187,11 +183,11 @@ function goBackToMain(){
   posterFormPage.classList.add("hidden")
   posterPage.classList.remove("hidden")
 }
+
 function showSavedPosters(){
   savedPostersPage.classList.remove("hidden")
   posterPage.classList.add("hidden")
 }
-
 
 function showMyPoster() {
   var userImage = imageInput.value;
@@ -209,7 +205,7 @@ function showMyPoster() {
   posterQuote.innerText = userPoster.quote
   goBackToMain()
 
-return userPoster
+  return userPoster
 }
 
 function saveThisPoster() {
@@ -222,7 +218,7 @@ function saveThisPoster() {
       poster.quote === currentPoster.quote
     );
   });
-
+  
   if (!areTwinsies) {
     savedPosters.push(currentPoster);
   }
@@ -230,7 +226,6 @@ function saveThisPoster() {
 
 function displaySavedPosters() {
   savedPostersGrid.innerHTML = ""; 
-
   for (var i = 0; i < savedPosters.length; i++) {
     var poster = savedPosters[i];
     var posterElement = document.createElement("div");
