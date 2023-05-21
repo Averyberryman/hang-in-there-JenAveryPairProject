@@ -19,6 +19,9 @@ var imageInput = document.querySelector("#poster-image-url")
 var titleInput = document.querySelector("#poster-title")
 var quoteInput = document.querySelector("#poster-quote")
 
+var savedPostersGrid = document.querySelector(".saved-posters-grid")
+
+
 
 
 // we've provided you with some data to work with 👇
@@ -130,7 +133,7 @@ makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
 showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
-saveThisButton.addEventListener("click", saveThisPoster)
+// saveThisButton.addEventListener("click", )
 
 showMyPosterButton.addEventListener("click", function(event) {
   event.preventDefault();
@@ -185,10 +188,7 @@ function showSavedPosters(){
   savedPostersPage.classList.remove("hidden")
   posterPage.classList.add("hidden")
 }
-function saveThisPoster(){
-  savedPostersPage.classList.remove("hidden")
-  posterPage.classList.add("hidden")
-}
+
 
 function showMyPoster() {
   var userImage = imageInput.value;
@@ -209,4 +209,4 @@ function showMyPoster() {
 return userPoster
 }
 
-//
+/////////Iteration 3///////
