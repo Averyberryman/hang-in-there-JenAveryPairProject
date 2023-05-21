@@ -9,15 +9,15 @@ var showSavedButton = document.querySelector(".show-saved")
 var saveThisButton = document.querySelector(".save-poster")
 var nevermindButton = document.querySelector(".show-main")
 var backToMainButton= document.querySelector(".back-to-main")
-var showMyPosterButton = documet.querySelector(".make-poster")
+var showMyPosterButton = document.querySelector(".make-poster")
 
 var posterFormPage = document.querySelector(".poster-form")
 var posterPage = document.querySelector(".main-poster")
 var savedPostersPage = document.querySelector(".saved-posters")
 
 var inputBox1 = document.querySelector("#poster-image-url")
-var inputBox2 = document.querySelector('#poster-title')
-var inputBox3 = document.querySelector('#poster-quote')
+var inputBox2 = document.querySelector("#poster-title")
+var inputBox3 = document.querySelector("#poster-quote")
 
 
 
@@ -130,7 +130,10 @@ nevermindButton.addEventListener("click", goBackToMain)
 showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
 saveThisButton.addEventListener("click", saveThisPoster)
-showMyPosterButton.addEventListener("click", createYourOwnPoster)
+showMyPosterButton.addEventListener("click", function(event){
+  event.preventDefault()
+  createYourOwnPoster()
+})
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -180,16 +183,42 @@ function saveThisPoster(){
 }
 
 ////////////////////Iteration 2//////////////
- function createYourOwnPoster(){
- var userProvidedImage = inputBox1.value 
- var userProvidedTitle = inputBox2.value 
- var userProvidedQuote = inputBox3.value 
+//  function createYourOwnPoster(){
+//  var userProvidedImage = inputBox1.value 
+//  var userProvidedTitle = inputBox2.value 
+//  var userProvidedQuote = inputBox3.value 
 
-  var createUserPoster= createNewPoster(userProvidedImage, userProvidedTitle, userProvidedQuote)
-  return createUserPoster
+//   var createUserPoster= createNewPoster(userProvidedImage, userProvidedTitle, userProvidedQuote)
+//   return createUserPoster
+//   }
+// reference:
+// function createNewPoster() {
+//   var newPosterInfo = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
+//   displayPoster(newPosterInfo)
+//   return newPosterInfo
+// }
+
+  function createYourOwnPoster() {
+  
+    var userProvidedImage = inputBox1.value
+    var userProvidedTitle = inputBox2.value
+    var userProvidedQuote = inputBox3.value
+
+    images.push(userProvidedImage)
+    titles.push(userProvidedTitle)
+    quotes.push(userProvidedQuote)
+    
+    var userPoster = createPoster(userProvidedImage, userProvidedTitle, userProvidedQuote)
+   
+
+    posterImage.src = userPoster.imageURL
+    posterTitle.innerText = userPoster.title
+    posterQuote.innerText = userPoster.quote
+    goBackToMain()
+
+    // displayPoster(userPoster)
+    return userPoster
   }
-
- }
 
 //   posterFormPageHidden.classList.remove("poster-form hidden")
 //   posterFormHidden.classList.add("poster-form")
