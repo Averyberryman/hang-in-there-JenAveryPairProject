@@ -9,10 +9,15 @@ var showSavedButton = document.querySelector(".show-saved")
 var saveThisButton = document.querySelector(".save-poster")
 var nevermindButton = document.querySelector(".show-main")
 var backToMainButton= document.querySelector(".back-to-main")
+var showMyPosterButton = document.querySelector(".make-poster")
 
 var posterFormPage = document.querySelector(".poster-form")
 var posterPage = document.querySelector(".main-poster")
 var savedPostersPage = document.querySelector(".saved-posters")
+
+var imageInput = document.querySelector("#poster-image-url")
+var titleInput = document.querySelector("#poster-title")
+var quoteInput = document.querySelector("#poster-quote")
 
 
 
@@ -120,11 +125,23 @@ var currentPoster;
 
 randomPosterButton.addEventListener("click", createNewPoster)
 window.addEventListener("load", createNewPoster)
+
 makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
 showSavedButton.addEventListener("click", showSavedPosters)
 backToMainButton.addEventListener("click", goBackToMain)
 saveThisButton.addEventListener("click", saveThisPoster)
+
+showMyPosterButton.addEventListener("click", function(event) {
+  event.preventDefault();
+  showMyPoster();
+})
+
+
+
+
+
+
 
 // functions and event handlers go here 👇
 // (we've provided two to get you started)!
@@ -135,7 +152,7 @@ function getRandomIndex(array) {
 
 function createNewPoster() {
   var newPosterInfo = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
-  displayPoster(newPosterInfo)
+  displayPoster(newPosterInfo);
   return newPosterInfo
 }
 
@@ -173,29 +190,23 @@ function saveThisPoster(){
   posterPage.classList.add("hidden")
 }
 
-//   posterFormPageHidden.classList.remove("poster-form hidden")
-//   posterFormHidden.classList.add("poster-form")
-// }
-// When a user clicks the "Make Your Own Poster" button, we should see the form, and the main poster should be hidden.
-// 1. we'll use devtools to identify where the button element is
-// 2. create an event listener for a "click"
-// 3. create an event handler function for that click.
-// 4. make the event handler navigate to the element that stores the form in html (stored under ".poster-form hidden")
-// 5. target the poster form hidden class and change the innerText to remove 'hidden'
-// 6. we need an event listener for clicking that button and an event handler that toggles the hidden.  we need a switch //   that swaps main poster. when one is hidden, the other is visible and vice versa. 
-// (reference kayla's codepen on how to toggle with a button. ) this is a conditional 
-// if (posterformhidden === posterformhidden) {
-//  it'll change it
-// if one is visible the other two must be hidden 
+function showMyPoster() {
+  var userImage = imageInput.value;
+  var userTitle = titleInput.value;
+  var userQuote = quoteInput.value;
 
+  images.push(userImage)
+  titles.push(userTitle)
+  quotes.push(userQuote)
+  
+  var userPoster = createPoster(userImage, userTitle, userQuote)
 
+  posterImage.src = userPoster.imageURL
+  posterTitle.innerText = userPoster.title
+  posterQuote.innerText = userPoster.quote
+  goBackToMain()
 
-//  function buttonClick(event) {
-//     posterImage.src 
-//     posterTitle.innerText
-//     posterQuote.innerText
-//     console.log("hello")
-//     console.log(event)
-//     // location.reload() // this allows us to refresh page
-//   }
+return userPoster
+}
 
+//
