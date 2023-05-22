@@ -232,8 +232,8 @@ function displaySavedPosters() {
     posterElement.classList.add("mini-poster");
     posterElement.innerHTML = `
       <img class="mini-poster-img" src="${poster.imageURL}" alt="Saved Poster">
-      <h4 class="mini-poster-title">${poster.title}</h4>
-      <h5 class="mini-poster-quote">${poster.quote}</h5>
+      <h2 class="mini-poster-title">${poster.title}</h2>
+      <h4 class="mini-poster-quote">${poster.quote}</h4>
     `;
     savedPostersGrid.appendChild(posterElement);
   }
