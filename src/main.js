@@ -129,7 +129,6 @@ var currentPoster;
 
 randomPosterButton.addEventListener("click", createRandomPoster)
 window.addEventListener("load", createRandomPoster)
-
 makeYourOwnButton.addEventListener("click", showForm)
 nevermindButton.addEventListener("click", goBackToMain)
 backToMainButton.addEventListener("click", goBackToMain)
@@ -149,13 +148,13 @@ showSavedButton.addEventListener("click", function() {
 
 function getRandomIndex(array) {
   var result = Math.floor(Math.random() * array.length);
-  return array[result]
+  return array[result];
 }
 
 function createRandomPoster() {
   var newPosterInfo = createPoster(getRandomIndex(images), getRandomIndex(titles), getRandomIndex(quotes))
   displayPoster(newPosterInfo);
-  return newPosterInfo
+  return newPosterInfo;
 }
 
 function createPoster(imageURL, title, quote) {
@@ -168,49 +167,44 @@ function createPoster(imageURL, title, quote) {
 }
 
 function displayPoster(poster){
-  posterImage.src = poster.imageURL
-  posterTitle.innerText = poster.title
-  posterQuote.innerText = poster.quote
+  posterImage.src = poster.imageURL;
+  posterTitle.innerText = poster.title;
+  posterQuote.innerText = poster.quote;
 }
 
 function showForm(){
- posterFormPage.classList.remove("hidden")
-  posterPage.classList.add("hidden")
+  posterFormPage.classList.remove("hidden");
+  posterPage.classList.add("hidden");
 }
 
 function goBackToMain(){
-  savedPostersPage.classList.add("hidden")
-  posterFormPage.classList.add("hidden")
-  posterPage.classList.remove("hidden")
+  savedPostersPage.classList.add("hidden");
+  posterFormPage.classList.add("hidden");
+  posterPage.classList.remove("hidden");
 }
 
 function showSavedPosters(){
-  savedPostersPage.classList.remove("hidden")
-  posterPage.classList.add("hidden")
+  savedPostersPage.classList.remove("hidden");
+  posterPage.classList.add("hidden");
 }
 
 function showMyPoster() {
   var userImage = imageInput.value;
   var userTitle = titleInput.value;
   var userQuote = quoteInput.value;
-
-  images.push(userImage)
-  titles.push(userTitle)
-  quotes.push(userQuote)
-  
-  var userPoster = createPoster(userImage, userTitle, userQuote)
-
-  posterImage.src = userPoster.imageURL
-  posterTitle.innerText = userPoster.title
-  posterQuote.innerText = userPoster.quote
-  goBackToMain()
-
-  return userPoster
+  images.push(userImage);
+  titles.push(userTitle);
+  quotes.push(userQuote);
+  var userPoster = createPoster(userImage, userTitle, userQuote);
+  posterImage.src = userPoster.imageURL;
+  posterTitle.innerText = userPoster.title;
+  posterQuote.innerText = userPoster.quote;
+  goBackToMain();
+  return userPoster;
 }
 
 function saveThisPoster() {
   var currentPoster = createPoster(posterImage.src, posterTitle.innerText, posterQuote.innerText);
-
   var areTwinsies = savedPosters.some(function(poster) {
     return (
       poster.imageURL === currentPoster.imageURL &&
@@ -218,7 +212,6 @@ function saveThisPoster() {
       poster.quote === currentPoster.quote
     );
   });
-  
   if (!areTwinsies) {
     savedPosters.push(currentPoster);
   }
